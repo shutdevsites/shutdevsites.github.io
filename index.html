@@ -174,28 +174,58 @@
             margin: 2rem 0;
         }
         
-        .skills-grid {
+        .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1.5rem;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
         }
         
-        .skill-card {
+        .card {
             background: var(--card-bg);
             padding: 1.5rem;
             border-radius: 8px;
-            transition: transform 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s;
             border-left: 3px solid var(--accent);
         }
         
-        .skill-card:hover {
+        .card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
         
-        .skill-card h3 {
+        .card h3 {
             color: var(--accent);
-            margin-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .price {
+            font-weight: bold;
+            color: var(--accent-light);
+            margin-top: 1rem;
+        }
+        
+        .contact-card {
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .contact-icon {
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+        
+        .contact-card a {
+            color: var(--text);
+            text-decoration: none;
+            display: block;
+            margin-top: 1rem;
+            transition: color 0.3s;
+        }
+        
+        .contact-card a:hover {
+            color: var(--accent);
         }
         
         footer {
@@ -221,6 +251,8 @@
             
             nav ul {
                 gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
             }
             
             main {
@@ -238,6 +270,10 @@
             
             h2 {
                 font-size: 1.8rem;
+            }
+            
+            .grid {
+                grid-template-columns: 1fr;
             }
         }
         
@@ -272,6 +308,7 @@
         </nav>
     </header>
 
+    <!-- Главная страница -->
     <main id="home">
         <section class="hero">
             <h1 class="animate">Designer & Web Developer</h1>
@@ -291,22 +328,147 @@
 
         <section class="animate delay-4">
             <h2>Основные навыки</h2>
-            <div class="skills-grid">
-                <div class="skill-card">
+            <div class="grid">
+                <div class="card">
                     <h3>HTML/CSS</h3>
                     <p>Семантическая вёрстка по современным стандартам</p>
                 </div>
-                <div class="skill-card">
+                <div class="card">
                     <h3>Figma</h3>
                     <p>Дизайн интерфейсов и прототипирование</p>
                 </div>
-                <div class="skill-card">
+                <div class="card">
                     <h3>GitHub Pages</h3>
                     <p>Хостинг и развертывание проектов</p>
                 </div>
-                <div class="skill-card">
+                <div class="card">
                     <h3>Адаптивный дизайн</h3>
                     <p>Идеальное отображение на всех устройствах</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Страница услуг -->
+    <main id="services" style="display: none;">
+        <section class="hero">
+            <h1 class="animate">Услуги</h1>
+            <p class="animate delay-1">Качественные решения по доступным ценам</p>
+        </section>
+
+        <div class="divider"></div>
+
+        <section class="animate delay-2">
+            <h2>Дизайн</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Аватарка</h3>
+                    <p>Стильный дизайн аватарки для соцсетей</p>
+                    <div class="price">$1.5 / 150₽</div>
+                </div>
+                <div class="card">
+                    <h3>Баннер</h3>
+                    <p>Яркий баннер для YouTube или соцсетей</p>
+                    <div class="price">$2 / 200₽</div>
+                </div>
+                <div class="card">
+                    <h3>Анимированная аватарка</h3>
+                    <p>Динамичный анимированный аватар</p>
+                    <div class="price">$2.5 / 250₽</div>
+                </div>
+                <div class="card">
+                    <h3>Анимированный баннер</h3>
+                    <p>Захватывающий анимированный баннер</p>
+                    <div class="price">$2.5 / 250₽</div>
+                </div>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <section class="animate delay-3">
+            <h2>Веб-сайты</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Простые</h3>
+                    <p>Лендинг или одностраничный сайт</p>
+                    <div class="price">$3</div>
+                </div>
+                <div class="card">
+                    <h3>Средние</h3>
+                    <p>Сайт с несколькими разделами</p>
+                    <div class="price">$5</div>
+                </div>
+                <div class="card">
+                    <h3>Качественные</h3>
+                    <p>Полноценный сайт с индивидуальным дизайном</p>
+                    <div class="price">$6</div>
+                </div>
+                <div class="card">
+                    <h3>Анимированные</h3>
+                    <p>Доплата за анимации на сайте</p>
+                    <div class="price">+$3</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Страница портфолио -->
+    <main id="portfolio" style="display: none;">
+        <section class="hero">
+            <h1 class="animate">Портфолио</h1>
+            <p class="animate delay-1">Мои последние работы</p>
+        </section>
+
+        <div class="divider"></div>
+
+        <section class="animate delay-2">
+            <div class="grid">
+                <div class="card">
+                    <h3>shutsite.github.io</h3>
+                    <p>Пример адаптивного сайта-портфолио</p>
+                    <a href="https://shutsite.github.io" target="_blank" class="domain-link" style="display: inline-block; margin-top: 1rem;">Посмотреть</a>
+                </div>
+                <div class="card">
+                    <h3>shutdev.github.io</h3>
+                    <p>Лендинг для веб-разработчика</p>
+                    <a href="https://shutdev.github.io" target="_blank" class="domain-link" style="display: inline-block; margin-top: 1rem;">Посмотреть</a>
+                </div>
+                <div class="card">
+                    <h3>ipshut.github.io</h3>
+                    <p>Персональный блог с проектами</p>
+                    <a href="https://ipshut.github.io" target="_blank" class="domain-link" style="display: inline-block; margin-top: 1rem;">Посмотреть</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Страница контактов -->
+    <main id="contacts" style="display: none;">
+        <section class="hero">
+            <h1 class="animate">Контакты</h1>
+            <p class="animate delay-1">Свяжитесь со мной удобным способом</p>
+        </section>
+
+        <div class="divider"></div>
+
+        <section class="animate delay-2">
+            <div class="grid">
+                <div class="card contact-card">
+                    <div class="contact-icon">
+                        <i class="fab fa-telegram"></i>
+                    </div>
+                    <h3>Telegram</h3>
+                    <p>Быстрый способ связи</p>
+                    <a href="https://t.me/ipshut" target="_blank">@ipshut</a>
+                </div>
+                <div class="card contact-card">
+                    <div class="contact-icon">
+                        <i class="fab fa-discord"></i>
+                    </div>
+                    <h3>Discord</h3>
+                    <p>Для обсуждения проектов</p>
+                    <a href="https://discord.com/users/ipshut" target="_blank">ipshut</a>
                 </div>
             </div>
         </section>
@@ -315,23 +477,37 @@
     <footer></footer>
 
     <script>
+        // Навигация между страницами
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
                 const targetId = this.getAttribute('href');
                 
+                // Скрыть все страницы
                 document.querySelectorAll('main').forEach(main => {
                     main.style.display = 'none';
                 });
                 
+                // Показать выбранную страницу
                 document.querySelector(targetId).style.display = 'block';
+                
+                // Прокрутка вверх
                 window.scrollTo(0, 0);
+                
+                // Анимация элементов
+                const animated = document.querySelectorAll(`${targetId} .animate`);
+                animated.forEach((el, index) => {
+                    el.style.opacity = '0';
+                    el.style.animation = `fadeIn 0.8s forwards ${index * 0.2 + 0.2}s`;
+                });
             });
         });
         
+        // По умолчанию показываем главную страницу
         document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('home').style.display = 'block';
             
+            // Инициализация анимаций
             const animated = document.querySelectorAll('.animate');
             animated.forEach(el => {
                 el.style.opacity = '0';
@@ -339,4 +515,4 @@
         });
     </script>
 </body>
-    </html>
+</html>

@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>shut – Designer & Web Developer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --dark-bg: #1a1a1a;
+            --accent: #ff3366;
+            --accent-light: #ff8c42;
+            --text: #e0e0e0;
+            --text-light: #aaaaaa;
+            --card-bg: #2d2d2d;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        
+        body {
+            background: var(--dark-bg);
+            color: var(--text);
+            line-height: 1.7;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        header {
+            background: rgba(26, 26, 26, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #333;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 800;
+            font-size: 1.5rem;
+            background: linear-gradient(45deg, var(--accent), var(--accent-light));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .logo img {
+            height: 40px;
+            width: auto;
+            object-fit: contain;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+        
+        nav a:hover {
+            color: var(--accent);
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background: var(--accent);
+            transition: width 0.3s;
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        main {
+            margin-top: 80px;
+            padding: 2rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            width: 100%;
+            flex: 1;
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 4rem 0 2rem;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--accent), var(--accent-light));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1.2;
+        }
+        
+        .domain-link {
+            display: inline-block;
+            margin: 1rem 0 2rem;
+            color: var(--accent);
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 1.2rem;
+            border: 2px solid var(--accent);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            transition: all 0.3s;
+        }
+        
+        .domain-link:hover {
+            background: var(--accent);
+            color: white;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        section {
+            margin-bottom: 3rem;
+        }
+        
+        h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 50%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-light));
+        }
+        
+        .divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #444, transparent);
+            margin: 2rem 0;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .card {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-left: 3px solid var(--accent);
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+        
+        .price {
+            font-weight: bold;
+            color: var(--accent-light);
+            margin-top: 1rem;
+        }
+        
+        .contact-card {
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .contact-icon {
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+        
+        .contact-card a {
+            color: var(--text);
+            text-decoration: none;
+            display: block;
+            margin-top: 1rem;
+            transition: color 0.3s;
+        }
+        
+        .contact-card a:hover {
+            color: var(--accent);
+        }
+        
+        footer {
+            background: var(--dark-bg);
+            padding: 1.5rem;
+            text-align: center;
+            border-top: 1px solid #333;
+        }
+        
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                padding: 0.8rem;
+            }
+            
+            .logo {
+                margin-bottom: 0.5rem;
+            }
+            
+            .logo img {
+                height: 35px;
+            }
+            
+            nav ul {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            main {
+                padding: 1rem;
+                margin-top: 100px;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate {
+            animation: fadeIn 0.8s forwards;
+        }
+        
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+        .delay-4 { animation-delay: 0.8s; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="logo.png" alt="shut logo">
+            <span>shut</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home" class="nav-link">Главная</a></li>
+                <li><a href="#services" class="nav-link">Услуги</a></li>
+                <li><a href="#portfolio" class="nav-link">Портфолио</a></li>
+                <li><a href="#contacts" class="nav-link">Контакты</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Главная страница -->
+    <main id="home">
+        <section class="hero">
+            <h1 class="animate">Designer & Web Developer</h1>
+            <a href="https://shutdevsites.github.io" class="domain-link animate delay-1" target="_blank">shutdevsites.github.io</a>
+            <p class="animate delay-2">Полгода опыта создания современных веб-решений</p>
+        </section>
+
+        <div class="divider"></div>
+
+        <section class="animate delay-3">
+            <h2>Обо мне</h2>
+            <p>Создаю стильные сайты с адаптивной вёрсткой и плавными анимациями. Специализируюсь на чистом коде и внимании к деталям.</p>
+            <p>Работаю с GitHub Pages, Telegram API и создаю как простые лендинги, так и сложные интерактивные интерфейсы.</p>
+        </section>
+
+        <div class="divider"></div>
+
+        <section class="animate delay-4">
+            <h2>Основные навыки</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>HTML/CSS</h3>
+                    <p>Семантическая вёрстка по современным стандартам</p>
+                </div>
+                <div class="card">
+                    <h3>Figma</h3>
+                    <p>Дизайн интерфейсов и прототипирование</p>
+                </div>
+                <div class="card">
+                    <h3>GitHub Pages</h3>
+                    <p>Хостинг и развертывание проектов</p>
+                </div>
+                <div class="card">
+                    <h3>Адаптивный дизайн</h3>
+                    <p>Идеальное отображение на всех устройствах</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Страница услуг -->
+    <main id="services" style="display: none;">
+        <section class="hero">
+            <h1 class="animate">Услуги</h1>
+            <p class="animate delay-1">Качественные решения по доступным ценам</p>
+        </section>
+
+        <div class="divider"></div>
+
+        <section class="animate delay-2">
+            <h2>Дизайн</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Аватарка</h3>
+                    <p>Стильный дизайн аватарки для соцсетей</p>
+                    <div class="price">$1.5 / 150₽</div>
+                </div>
+                <div class="card">
+                    <h3>Баннер</h3>
+                    <p>Яркий баннер для YouTube или соцсетей</p>
+                    <div class="price">$2 / 200₽</div>
+                </div>
+                <div class="card">
+                    <h3>Анимированная аватарка</h3>
+                    <p>Динамичный анимированный аватар</p>
+                    <div class="price">$2.5 / 250₽</div>
+                </div>
+                <div class="card">
+                    <h3>Анимированный баннер</h3>
+                    <p>Захватывающий анимированный баннер</p>
+                    <div class="price">$2.5 / 250₽</div>
+                </div>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <section class="animate delay-3">
+            <h2>Веб-сайты</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Простые</h3>
+                    <p>Лендинг или одностраничный сайт</p>
+                    <div class="price">$3</div>
+                </div>
+                <div class="card">
+                    <h3>Средние</h3>
+                    <p>Сайт с несколькими разделами</p>
+                    <div class="price">$5</div>
+                </div>
+                <div class="card">
+                    <h3>Качественные</h3>
+                    <p>Полноценный сайт с индивидуальным дизайном</p>
+                    <div class="price">$6</div>
+                </div>
+                <div class="card">
+                    <h3>Анимированные</h3>
+                    <p>Доплата за анимации на сайте</p>
+                    <div class="price">+$3</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Страница портфолио -->
+    <main id="portfolio" style="display: none;">
+        <section class="hero">
+            <h1 class="animate">Портфолио</h1>
+            <p class="animate delay-1">Мои последние работы</p>
+        </section>
+
+        <div class="divider"></div>
+
+        <section class="animate delay-2">
+            <div class="grid">
+                <div class="card">
+                    <h3>shutsite.github.io</h3>
+                    <p>Пример адаптивного сайта-портфолио</p>
+                    <a href="https://shutsite.github.io" target="_blank" class="domain-link" style="display: inline-block; margin-top: 1rem;">Посмотреть</a>
+                </div>
+                <div class="card">
+                    <h3>shutdev.github.io</h3>
+                    <p>Лендинг для веб-разработчика</p>
+                    <a href="https://shutdev.github.io" target="_blank" class="domain-link" style="display: inline-block; margin-top: 1rem;">Посмотреть</a>
+                </div>
+                <div class="card">
+                    <h3>ipshut.github.io</h3>
+                    <p>Персональный блог с проектами</p>
+                    <a href="https://ipshut.github.io" target="_blank" class="domain-link" style="display: inline-block; margin-top: 1rem;">Посмотреть</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Страница контактов -->
+    <main id="contacts" style="display: none;">
+        <section class="hero">
+            <h1 class="animate">Контакты</h1>
+            <p class="animate delay-1">Свяжитесь со мной удобным способом</p>
+        </section>
+
+        <div class="divider"></div>
+
+        <section class="animate delay-2">
+            <div class="grid">
+                <div class="card contact-card">
+                    <div class="contact-icon">
+                        <i class="fab fa-telegram"></i>
+                    </div>
+                    <h3>Telegram</h3>
+                    <p>Быстрый способ связи</p>
+                    <a href="https://t.me/ipshut" target="_blank">@ipshut</a>
+                </div>
+                <div class="card contact-card">
+                    <div class="contact-icon">
+                        <i class="fab fa-discord"></i>
+                    </div>
+                    <h3>Discord</h3>
+                    <p>Для обсуждения проектов</p>
+                    <a href="https://discord.com/users/ipshut" target="_blank">ipshut</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer></footer>
+
+    <script>
+        // Навигация между страницами
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                
+                // Скрыть все страницы
+                document.querySelectorAll('main').forEach(main => {
+                    main.style.display = 'none';
+                });
+                
+                // Показать выбранную страницу
+                document.querySelector(targetId).style.display = 'block';
+                
+                // Прокрутка вверх
+                window.scrollTo(0, 0);
+                
+                // Анимация элементов
+                const animated = document.querySelectorAll(`${targetId} .animate`);
+                animated.forEach((el, index) => {
+                    el.style.opacity = '0';
+                    el.style.animation = `fadeIn 0.8s forwards ${index * 0.2 + 0.2}s`;
+                });
+            });
+        });
+        
+        // По умолчанию показываем главную страницу
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('home').style.display = 'block';
+            
+            // Инициализация анимаций
+            const animated = document.querySelectorAll('.animate');
+            animated.forEach(el => {
+                el.style.opacity = '0';
+            });
+        });
+    </script>
+</body>
+</html>
